@@ -1,0 +1,17 @@
+version: "3"
+services:
+  jupyterlab:
+    build: .
+    volumes:
+      - /mnt/d/jupyter:/tmp/work
+    working_dir: /tmp/work
+    ports:
+      - 8888:8888
+    command: jupyter notebook --port=8888 --ip=0.0.0.0 --allow-root --no-browser
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
