@@ -4,7 +4,10 @@ services:
     build: .
     volumes:
       - /mnt/d/jupyter:/tmp/work
+      - ./.jupyter:/home/jovyan/.jupyter
     working_dir: /tmp/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
     ports:
       - 8888:8888
     command: jupyter notebook --port=8888 --ip=0.0.0.0 --allow-root --no-browser
