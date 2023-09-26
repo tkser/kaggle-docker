@@ -1,10 +1,11 @@
-FROM jupyter/scipy-notebook:lab-3.6.3
+FROM jupyter/scipy-notebook:python-3.10
 
 # Install JupyterLab extensions
 RUN pip install --upgrade pip \
 &&  pip install --no-cache-dir \
     jupyterlab-language-pack-ja-JP \
     jupyterlab_code_formatter \
+    jupyterlab_tabnine \
     lckr-jupyterlab-variableinspector \
     jupyterlab_widgets \
     ipywidgets \
