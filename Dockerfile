@@ -11,7 +11,7 @@ RUN pip install --upgrade pip \
     black
 
 # Install RAPIDS
-RUN pip install --extra-index-url https://pypi.nvidia.com \
+RUN pip install --no-cache-dir --extra-index-url https://pypi.nvidia.com \
     cudf-cu11 dask-cudf-cu11 cuml-cu11 cugraph-cu11 cuspatial-cu11 cuproj-cu11 cuxfilter-cu11 cucim
 
 # Install PyTorch
@@ -21,7 +21,8 @@ RUN pip install --no-cache-dir \
     torchaudio \
     --index-url https://download.pytorch.org/whl/cu118
 RUN pip install --no-cache-dir \
-    pytorch-lightning
+    pytorch-lightning \
+    pytorch_optimizer
 
 # Install TensorFlow
 RUN pip install --no-cache-dir \
@@ -42,6 +43,5 @@ RUN pip install --no-cache-dir \
     featuretools \
     optuna \
     geopandas \
-    polars
-
-RUN apt-get autoremove -y && apt-get clean -y
+    polars \
+    ttach
